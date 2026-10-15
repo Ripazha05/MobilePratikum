@@ -1,4 +1,4 @@
-package com.example.pratikummobilerifa.pertemuan_3
+package com.example.pratikummobilerifa.Home.pertemuan_3
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
