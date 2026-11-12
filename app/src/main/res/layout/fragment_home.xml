@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@color/bg_light"
     tools:context=".Home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,134 +30,128 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:subtitleTextColor="@android:color/white"
+            app:title="Dashboard"
             app:titleTextColor="@android:color/white" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardWelcome"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="35dp"
-            android:layout_marginTop="20dp"
-            android:hint="Email"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="20dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="35dp"
-            android:layout_marginTop="10dp"
-            android:text="Login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Halo, Rifa!"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroupFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-            app:singleSelection="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Silakan pilih modul praktikum di bawah ini:"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipTerbaru"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Terbaru" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipPenting"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Penting" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipBelumDibaca"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Belum Dibaca" />
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <androidx.gridlayout.widget.GridLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:padding="8dp"
-            app:columnCount="3"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chipGroupFilter"
-            app:useDefaultMargins="true">
+            app:layout_constraintTop_toBottomOf="@id/cardWelcome">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Menu 1"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
+                android:id="@+id/btnToFourth"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="12dp"
+                android:text="Pertemuan 4"
+                android:textSize="16sp"
+                app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Menu 2"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
+                android:id="@+id/btnToFifth"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="12dp"
+                android:text="Pertemuan 5"
+                android:textSize="16sp"
+                app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Menu 3"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
+                android:id="@+id/btnToSeventh"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="12dp"
+                android:text="Pertemuan 7"
+                android:textSize="16sp"
+                app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Menu 4"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
+                android:id="@+id/btnToPertemuan10"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="12dp"
+                android:text="Pertemuan 10"
+                android:textSize="16sp"
+                app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Menu 5"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
+                android:id="@+id/btnToEleventh"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="12dp"
+                android:text="Pertemuan 11 (TabLayout)"
+                android:textSize="16sp"
+                app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Menu 6"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
+                android:id="@+id/btnToAuth"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="12dp"
+                android:text="Auth Activity"
+                android:textSize="16sp"
+                app:cornerRadius="12dp" />
 
-        </androidx.gridlayout.widget.GridLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#EF5350"
+                android:text="Logout"
+                android:textSize="16sp"
+                app:backgroundTint="#EF5350"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

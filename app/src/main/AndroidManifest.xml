@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".AuthActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
@@ -52,6 +56,18 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Home.pertemuan_7.seventhActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Home.pertemuan_10.TenthActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Home.pertemuan_11.ActivityEleventh"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Message.tutorial.TutorialMessageActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity

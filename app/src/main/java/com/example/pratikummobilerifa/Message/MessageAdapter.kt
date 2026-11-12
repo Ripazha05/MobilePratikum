@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.pratikummobilerifa.databinding.ItemMessageBinding
-import com.google.android.material.snackbar.Snackbar
 
 class MessageAdapter(
     context: Context,
@@ -28,10 +28,10 @@ class MessageAdapter(
         binding.textMessage.text = data.messageText
 
         view.setOnClickListener {
-            Snackbar.make(
-                parent,
+            Toast.makeText(
+                context,
                 "Pesan dari ${data.senderName}: ${data.messageText}",
-                Snackbar.LENGTH_SHORT
+                Toast.LENGTH_SHORT
             ).show()
         }
 

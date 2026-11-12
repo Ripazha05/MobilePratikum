@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.pratikummobilerifa.Home.pertemuan_4.FourthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_5.FifthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_7.seventhActivity
+import com.example.pratikummobilerifa.Home.pertemuan_11.ActivityEleventh
 import com.example.pratikummobilerifa.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "Dashboard"
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -46,6 +50,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnToSeventh.setOnClickListener {
             val i = Intent(this@MainActivity, seventhActivity::class.java)
+            startActivity(i)
+        }
+
+        binding.btnToPertemuan10.setOnClickListener {
+            val i = Intent(this@MainActivity, BaseActivity::class.java)
+            startActivity(i)
+        }
+
+        binding.btnToEleventh.setOnClickListener {
+            val i = Intent(this@MainActivity, ActivityEleventh::class.java)
             startActivity(i)
         }
 

@@ -6,13 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pratikummobilerifa.AuthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_4.FourthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_5.FifthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_7.seventhActivity
+import com.example.pratikummobilerifa.Home.pertemuan_10.TenthActivity
+import com.example.pratikummobilerifa.Home.pertemuan_11.ActivityEleventh
 import com.example.pratikummobilerifa.databinding.FragmentHomeBinding
-import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -30,38 +32,63 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
-            title = "Home"
+            title = "Dashboard"
         }
 
-        binding.btnMenu1.setOnClickListener {
+        binding.btnToFourth.setOnClickListener {
             val i = Intent(requireContext(), FourthActivity::class.java)
             i.putExtra("name", "Politeknik Caltex Rifa")
             i.putExtra("from", "Rumbai")
             i.putExtra("age", 25)
             startActivity(i)
         }
-        binding.btnMenu2.setOnClickListener {
-            val i = Intent(requireContext(), FifthActivity::class.java)
-            startActivity(i)
+
+        binding.btnToFifth.setOnClickListener {
+            val i = Intent(requireContext(), ActivityEleventh::class.java) // wait, FifthActivity
+            val intent = Intent(requireContext(), FifthActivity::class.java)
+            startActivity(intent)
         }
-        binding.btnMenu3.setOnClickListener {
-            val i = Intent(this@HomeFragment.requireContext(), seventhActivity::class.java)
+
+        binding.btnToSeventh.setOnClickListener {
+            val i = Intent(requireContext(), seventhActivity::class.java)
             startActivity(i)
         }
 
-        binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            Toast.makeText(requireContext(), "Login email: $email", Toast.LENGTH_SHORT).show()
+        binding.btnToPertemuan10.setOnClickListener {
+            val i = Intent(requireContext(), TenthActivity::class.java)
+            startActivity(i)
         }
 
-        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
-            val selectedChipId = checkedIds.firstOrNull()
-            if (selectedChipId != null) {
-                val chip = group.findViewById<Chip>(selectedChipId)
-                if (chip != null) {
-                    Toast.makeText(requireContext(), "Filter: ${chip.text}", Toast.LENGTH_SHORT).show()
+        binding.btnToEleventh.setOnClickListener {
+            val i = Intent(requireContext(), ActivityEleventh::class.java)
+            startActivity(i)
+        }
+
+        binding.btnToAuth.setOnClickListener {
+            val i = Intent(requireContext(), AuthActivity::class.java)
+            startActivity(i)
+        }
+
+        binding.btnLogout.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Konfirmasi_Logout")
+                .setMessage("Apakah Anda yakin ingin logout?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    val sharedPref = requireActivity().getSharedPreferences("user_pref", android.content.Context.MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+
+                    dialog.dismiss()
+
+                    val intent = Intent(requireContext(), AuthActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
                 }
-            }
+                .setNegativeButton("Tidak") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 

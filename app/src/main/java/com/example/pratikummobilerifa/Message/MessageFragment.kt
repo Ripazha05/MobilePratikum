@@ -1,11 +1,19 @@
 package com.example.pratikummobilerifa.Message
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
+import com.example.pratikummobilerifa.Message.tutorial.TutorialMessageActivity
+import com.example.pratikummobilerifa.R
 import com.example.pratikummobilerifa.databinding.FragmentMessageBinding
 
 class MessageFragment : Fragment() {
@@ -37,9 +45,26 @@ class MessageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
+        (requireActivity()as AppCompatActivity).supportActionBar?.apply {
             title = "Message"
         }
+
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.message_toolbar_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_tutorial -> {
+                        val intent = Intent(requireContext(), TutorialMessageActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         val adapter = MessageAdapter(requireContext(), messageList)
         binding.listViewItems.adapter = adapter

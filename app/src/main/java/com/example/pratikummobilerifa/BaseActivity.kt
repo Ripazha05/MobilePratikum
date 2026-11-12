@@ -13,7 +13,7 @@ import com.example.pratikummobilerifa.More.MoreFragment
 import com.example.pratikummobilerifa.databinding.ActivityAuthBinding
 import com.example.pratikummobilerifa.databinding.ActivityBaseBinding
 
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBaseBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,10 @@ class BaseActivity : AppCompatActivity() {
                 else ->false // return false jika item tidak ada yang di klik
             }
 
+        }
+
+        if (savedInstanceState == null) {
+            binding.bottomNavView.selectedItemId = R.id.home
         }
 
     }
