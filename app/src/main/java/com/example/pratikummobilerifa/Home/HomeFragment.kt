@@ -7,14 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pratikummobilerifa.AuthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_4.FourthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_5.FifthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_7.seventhActivity
 import com.example.pratikummobilerifa.Home.pertemuan_10.TenthActivity
 import com.example.pratikummobilerifa.Home.pertemuan_11.ActivityEleventh
+import com.example.pratikummobilerifa.Home.photo.PhotoAdapter
+import com.example.pratikummobilerifa.data.api.CatFactApiClient
+import com.example.pratikummobilerifa.data.api.PhotoApiClient
 import com.example.pratikummobilerifa.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -35,6 +43,14 @@ class HomeFragment : Fragment() {
             title = "Dashboard"
         }
 
+        loadCatFact()
+
+        binding.btnRefresh.setOnClickListener {
+            loadCatFact()
+        }
+
+        loadPhoto()
+
         binding.btnToFourth.setOnClickListener {
             val i = Intent(requireContext(), FourthActivity::class.java)
             i.putExtra("name", "Politeknik Caltex Rifa")
@@ -44,7 +60,6 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnToFifth.setOnClickListener {
-            val i = Intent(requireContext(), ActivityEleventh::class.java) // wait, FifthActivity
             val intent = Intent(requireContext(), FifthActivity::class.java)
             startActivity(intent)
         }
@@ -89,6 +104,39 @@ class HomeFragment : Fragment() {
                     dialog.dismiss()
                 }
                 .show()
+        }
+    }
+
+    private fun loadCatFact() {
+        lifecycleScope.launch {
+            try {
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = "\"${response.fact}\""
+            } catch (e: Exception) {
+                binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+            }
+        }
+    }
+
+    private fun loadPhoto() {
+        lifecycleScope.launch {
+            try {
+                val photos = PhotoApiClient.apiService.getPhotos()
+                val adapter = PhotoAdapter(photos)
+                binding.rvGallery.adapter = adapter
+
+                /** List Tampil Vertical*/
+                binding.rvGallery.layoutManager = LinearLayoutManager(requireContext())
+
+                /** List Tampil Horizontal */
+                //binding.rvGallery.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+                /** List Tampil Grid */
+                //binding.rvGallery.layoutManager = GridLayoutManager(requireContext(), 2)
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Gagal memuat gambar", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
