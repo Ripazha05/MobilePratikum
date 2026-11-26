@@ -1,6 +1,6 @@
 package com.example.pratikummobilerifa.data.api
 
-import com.example.pratikummobilerifa.data.model.CatFactModel
+import com.example.pratikummobilerifa.model.CatFactModel
 import retrofit2.http.GET
 
 interface CatFactApiService {

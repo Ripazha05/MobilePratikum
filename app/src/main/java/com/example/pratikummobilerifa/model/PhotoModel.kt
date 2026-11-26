@@ -1,4 +1,4 @@
-package com.example.pratikummobilerifa.data.model
+package com.example.pratikummobilerifa.model
 
 data class PhotoModel(
     val id: String,

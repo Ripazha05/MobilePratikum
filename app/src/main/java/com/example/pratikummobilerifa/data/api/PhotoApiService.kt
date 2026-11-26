@@ -1,6 +1,6 @@
 package com.example.pratikummobilerifa.data.api
 
-import com.example.pratikummobilerifa.data.model.PhotoModel
+import com.example.pratikummobilerifa.model.PhotoModel
 import retrofit2.http.GET
 
 interface PhotoApiService {

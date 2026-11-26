@@ -1,7 +1,6 @@
 package com.example.pratikummobilerifa
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.pratikummobilerifa.Home.HomeFragment
 import com.example.pratikummobilerifa.Message.MessageFragment
 import com.example.pratikummobilerifa.More.MoreFragment
+import com.example.pratikummobilerifa.note.NoteFragment
 import com.example.pratikummobilerifa.databinding.ActivityAuthBinding
 import com.example.pratikummobilerifa.databinding.ActivityBaseBinding
 
@@ -33,6 +33,10 @@ open class BaseActivity : AppCompatActivity() {
                 }
                 R.id.message -> {
                     replaceFragment(MessageFragment())
+                    true
+                }
+                R.id.note -> {
+                    replaceFragment(NoteFragment())
                     true
                 }
                 R.id.more -> {

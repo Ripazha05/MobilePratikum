@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pratikummobilerifa.data.model.PhotoModel
+import com.example.pratikummobilerifa.model.PhotoModel
 import com.example.pratikummobilerifa.databinding.ItemPhotoBinding
 
 class PhotoAdapter(private val items: List<PhotoModel>) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
